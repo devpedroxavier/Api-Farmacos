@@ -1,12 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using WebApplication1.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionsStringMySql = builder.Configuration.GetConnectionString("ConnectionMySQL");
-builder.Services.AddDbContext<ApiDbContext>(x => x.useMySql(
-    connectionsStringMySql,
-    Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.4.22-MariaDB")
-    )
-);
+var connectionsString = builder.Configuration.GetConnectionString("PostgreSQLConnection");
+builder.Services.AddDbContext<FarmaciaContext>(options => 
+options.UseNpgsql(connectionsString));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
