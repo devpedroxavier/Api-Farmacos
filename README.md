@@ -1,2 +1,2 @@
 # Api-Farmacos
-Api para registros de farmacos
+Projeto de api para registro de farmacos com database postgreSQL
